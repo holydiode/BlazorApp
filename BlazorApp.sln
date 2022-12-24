@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{7BF5AA30-5BA5-4726-8B29-F7DA7EF52F50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLaba", "TestLaba\TestLaba.csproj", "{FDB63A7F-A887-4364-B9F9-BF1B69B943EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BF5AA30-5BA5-4726-8B29-F7DA7EF52F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF5AA30-5BA5-4726-8B29-F7DA7EF52F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF5AA30-5BA5-4726-8B29-F7DA7EF52F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF5AA30-5BA5-4726-8B29-F7DA7EF52F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB63A7F-A887-4364-B9F9-BF1B69B943EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB63A7F-A887-4364-B9F9-BF1B69B943EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB63A7F-A887-4364-B9F9-BF1B69B943EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB63A7F-A887-4364-B9F9-BF1B69B943EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C55B92BC-8C0C-4C1F-AF24-E2A52124C502}
+	EndGlobalSection
+EndGlobal
