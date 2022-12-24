@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -19,7 +20,9 @@ namespace BlazorApp.Data
         public string Discrib { get; set; }
         public int CoreId { get; set; }
 
+        [JsonIgnore]
         public virtual Core Core { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Permission> Permissions { get; set; }
     }
 }

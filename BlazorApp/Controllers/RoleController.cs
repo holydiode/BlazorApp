@@ -29,16 +29,16 @@ namespace BlazorApp.Controllers
 
         [Route("append-permission")]
         [HttpGet]
-        public void AppendPermission(int id,Permission permission)
+        public void AppendPermission(int id, string name, string value, int server_id)
         {
-            _service.RoleAppendPermission(id, permission);
+            _service.RoleAppendPermission(id, new Permission() { PermissionName = name, Value = value, ServerId = server_id});
         }
 
         [Route("create")]
         [HttpGet]
-        public void Create(Role role)
+        public void Create(string name, int price)
         {
-            _service.AddRole(role);
+            _service.AddRole(new Role {Name = name, Price = price});
         }
 
         [HttpDelete("{id}")]

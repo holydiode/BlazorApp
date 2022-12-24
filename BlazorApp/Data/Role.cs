@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -19,9 +20,13 @@ namespace BlazorApp.Data
         public int? Price { get; set; }
         public int? InheritedId { get; set; }
 
+        [JsonIgnore]
         public virtual Role Inherited { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Role> InverseInherited { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Permission> Permissions { get; set; }
+        [JsonIgnore]
         public virtual ICollection<ValidRole> ValidRoles { get; set; }
     }
 }

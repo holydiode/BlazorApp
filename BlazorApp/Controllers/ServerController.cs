@@ -30,9 +30,9 @@ namespace BlazorApp.Controllers
 
         [Route("create")]
         [HttpGet]
-        public void Create(GameServer server)
+        public void Create(string name, string ip, int port, string dscr)
         {
-            _service.AddServer(server);
+            _service.AddServer(new GameServer {Name = name, Ip = ip, Port = port, Discrib = dscr });
         }
 
         [HttpDelete("{id}")]
