@@ -14,8 +14,8 @@ namespace TestLaba
             var context = mock;
             var service = new ServerService(context);
             var server = new GameServer() {Name = "server"};
-            service.AddSerer(server);
-            var returned_server = service.GetSererByID(server.ServerId);
+            service.AddServer(server);
+            var returned_server = service.GetServerByID(server.ServerId);
             Assert.Same(returned_server, server);
         }
 
@@ -39,9 +39,9 @@ namespace TestLaba
             var context = mock;
             var service = new ServerService(context);
             var server = new GameServer() { Name = "server" };
-            service.AddSerer(server);
-            service.RemoveSererByID(server.ServerId);
-            server = service.GetSererByID(server.ServerId);
+            service.AddServer(server);
+            service.RemoveServerByID(server.ServerId);
+            server = service.GetServerByID(server.ServerId);
             Assert.Null(server);
         }
 
@@ -79,7 +79,7 @@ namespace TestLaba
             var context = mock;
             var service = new ServerService(context);
             var server = new GameServer() { Name = "server" };
-            service.AddSerer(server);
+            service.AddServer(server);
             var other_server = new GameServer() { Name = "other server" };
             service.ChangeSererByID(server.ServerId, other_server);
             Assert.Equal(other_server.Name, server.Name);

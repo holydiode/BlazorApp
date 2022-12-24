@@ -17,7 +17,7 @@ namespace BlazorApp.Logic
             _context = context;
         }
 
-        public void AddSerer(GameServer server)
+        public void AddServer(GameServer server)
         {
             _context.GameServers.Add(server);
             _context.SaveChanges();
@@ -29,7 +29,7 @@ namespace BlazorApp.Logic
             _context.SaveChanges();
         }
 
-        public GameServer GetSererByID(int id)
+        public GameServer GetServerByID(int id)
         {
             return _context.GameServers.Find(id);
         }
@@ -39,9 +39,9 @@ namespace BlazorApp.Logic
             return _context.Cores.Find(id);
         }
 
-        public void RemoveSererByID(int id)
+        public void RemoveServerByID(int id)
         {
-            var server = GetSererByID(id);
+            var server = GetServerByID(id);
             if (server is not null)
             {
                 _context.GameServers.Remove(server);
@@ -61,7 +61,7 @@ namespace BlazorApp.Logic
 
         public void ChangeSererByID(int id, GameServer new_server)
         {
-            var server = GetSererByID(id);
+            var server = GetServerByID(id);
             if (server is not null)
             {
                 server.Discrib = new_server.Discrib;
@@ -85,7 +85,7 @@ namespace BlazorApp.Logic
         }
 
         public IEnumerable<GameServer> GetServersList(){
-            return _context.GameServers.Include(a => a.Core);
+            return _context.GameServers;
         }
     }
 }

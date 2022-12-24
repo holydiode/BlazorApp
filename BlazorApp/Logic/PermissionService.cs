@@ -122,6 +122,22 @@ namespace BlazorApp.Logic
             return _context.Roles.Find(id);
         }
 
+        public void DeleteRoleByID(int id)
+        {
+            var role = GetRoleByID(id);
+            if (role is not null)
+            {
+                _context.Roles.Remove(role);
+                _context.SaveChanges();
+            }
+        }
+
+        public IEnumerable<Role> GetRoleList()
+        {
+            return _context.Roles.ToList();
+        }
+
+
         public Role GetRoleByName(string name)
         {
             return _context.Roles.Where(role => role.Name == name).FirstOrDefault();
