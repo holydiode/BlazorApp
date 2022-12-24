@@ -1,68 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BlazorApp.Data;
 using Xunit;
 
 namespace TestLaba.DataTest
 {
-
-    public class CoreDataTest
+    public class RoleDataTest
     {
         [Fact]
-        public void TestAddCore()
+        public void TestAddRole()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() {Name = "Pomelo"});
+            context.Roles.Add(new Role() { Name = "root" });
             context.SaveChanges();
             transaction.Rollback();
         }
 
         [Fact]
-        public void TestSelectCore()
+        public void TestSelectRole()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() { Name = "Pomelo" });
+            context.Roles.Add(new Role() { Name = "root" });
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.Roles.Where(x => x.Name == "root").FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }
 
         [Fact]
-        public void TestDeleteCore()
+        public void TestDeleteRole()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var Role = new Role() { Name = "root" };
+            context.Roles.Add(Role);
             context.SaveChanges();
-            context.Cores.Remove(core);
+            context.Roles.Remove(Role);
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.Roles.Where(x => x.Name == "root").FirstOrDefault();
             transaction.Rollback();
             Assert.Null(value);
         }
 
-
         [Fact]
-        public void TestChangeCore()
+        public void TestChangeRole()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var Role = new Role() { Name = "root" };
+            context.Roles.Add(Role);
             context.SaveChanges();
-            core.Name = "Lime";
+            Role.Name = "support";
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Lime").FirstOrDefault();
+            var value = context.Roles.Where(x => x.Name == "support").FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }
-
     }
 }

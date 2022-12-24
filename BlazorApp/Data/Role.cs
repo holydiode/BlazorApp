@@ -17,7 +17,7 @@ namespace BlazorApp.Data
         public int RoleId { get; set; }
         public string Name { get; set; }
         public int? Price { get; set; }
-        public int InheritedId { get; set; }
+        public int? InheritedId { get; set; }
 
         public virtual Role Inherited { get; set; }
         public virtual ICollection<Role> InverseInherited { get; set; }

@@ -1,65 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BlazorApp.Data;
 using Xunit;
 
 namespace TestLaba.DataTest
 {
-
-    public class CoreDataTest
+    public class PlayerDataTest
     {
         [Fact]
-        public void TestAddCore()
+        public void TestAddPlayer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() {Name = "Pomelo"});
+            context.Players.Add(new Player() { Nikname = "admin" });
             context.SaveChanges();
             transaction.Rollback();
         }
 
         [Fact]
-        public void TestSelectCore()
+        public void TestSelectPlayer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() { Name = "Pomelo" });
+            context.Players.Add(new Player() { Nikname = "admin" });
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.Players.Where(x => x.Nikname == "admin").FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }
 
         [Fact]
-        public void TestDeleteCore()
+        public void TestDeletePlayer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var player = new Player() { Nikname = "admin" };
+            context.Players.Add(player);
             context.SaveChanges();
-            context.Cores.Remove(core);
+            context.Players.Remove(player);
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.Players.Where(x => x.Nikname == "admin").FirstOrDefault();
             transaction.Rollback();
             Assert.Null(value);
         }
 
-
         [Fact]
-        public void TestChangeCore()
+        public void TestChangePlayer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var player = new Player() { Nikname = "admin" };
+            context.Players.Add(player);
             context.SaveChanges();
-            core.Name = "Lime";
+            player.Nikname = "root";
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Lime").FirstOrDefault();
+            var value = context.Players.Where(x => x.Nikname == "root").FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }

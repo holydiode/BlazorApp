@@ -10,7 +10,7 @@ namespace BlazorApp.Data
         public int PermissionId { get; set; }
         public string PermissionName { get; set; }
         public string Value { get; set; }
-        public int ServerId { get; set; }
+        public int? ServerId { get; set; }
         public int? RoleId { get; set; }
         public int? PlayerId { get; set; }
 

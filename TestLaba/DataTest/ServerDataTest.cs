@@ -1,49 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BlazorApp.Data;
 using Xunit;
 
 namespace TestLaba.DataTest
 {
-
-    public class CoreDataTest
+    public class ServerDataTest
     {
         [Fact]
-        public void TestAddCore()
+        public void TestAddServer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() {Name = "Pomelo"});
+            context.GameServers.Add(new GameServer() { Port = 1, Core = new Core()});
             context.SaveChanges();
             transaction.Rollback();
         }
 
         [Fact]
-        public void TestSelectCore()
+        public void TestSelectServer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            context.Cores.Add(new Core() { Name = "Pomelo" });
+            context.GameServers.Add(new GameServer() { Port = 1, Core = new Core() });
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.GameServers.Where(x => x.Port == 1 ).FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }
 
         [Fact]
-        public void TestDeleteCore()
+        public void TestDeleteServer()
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var server = new GameServer() { Port = 1, Core = new Core() };
+            context.GameServers.Add(server);
             context.SaveChanges();
-            context.Cores.Remove(core);
+            context.GameServers.Remove(server);
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Pomelo").FirstOrDefault();
+            var value = context.GameServers.Where(x => x.Port == 1).FirstOrDefault();
             transaction.Rollback();
             Assert.Null(value);
         }
@@ -54,12 +49,12 @@ namespace TestLaba.DataTest
         {
             var context = new BaseContext();
             var transaction = context.Database.BeginTransaction();
-            var core = new Core() { Name = "Pomelo" };
-            context.Cores.Add(core);
+            var server = new GameServer() { Port = 1, Core = new Core() };
+            context.GameServers.Add(server);
             context.SaveChanges();
-            core.Name = "Lime";
+            server.Port = 2;
             context.SaveChanges();
-            var value = context.Cores.Where(x => x.Name == "Lime").FirstOrDefault();
+            var value = context.GameServers.Where(x => x.Port == 2).FirstOrDefault();
             transaction.Rollback();
             Assert.NotNull(value);
         }
